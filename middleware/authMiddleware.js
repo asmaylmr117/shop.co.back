@@ -1,5 +1,7 @@
 const jwt = require('jsonwebtoken');
 
+const JWT_SECRET = 'ORH/KWxut9o01U4Nx8Mf4537IvZ+jrkwNqwIJ1kxjsZvLTYbk3PEmwItkRsUwLQsAcMz2SOCie8n7FuzMJPClw==';
+
 const verifyToken = (req, res, next) => {
   const token = req.headers['authorization']?.split(' ')[1];
   
@@ -8,7 +10,7 @@ const verifyToken = (req, res, next) => {
   }
 
   try {
-    const decoded = jwt.verify(token, process.env.JWT_SECRET);
+    const decoded = jwt.verify(token, JWT_SECRET);
     req.user = decoded;
     next();
   } catch (error) {
