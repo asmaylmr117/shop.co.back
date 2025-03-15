@@ -4,6 +4,8 @@ const supabase = require('../config/supabase');
 const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
 
+const JWT_SECRET = 'ORH/KWxut9o01U4Nx8Mf4537IvZ+jrkwNqwIJ1kxjsZvLTYbk3PEmwItkRsUwLQsAcMz2SOCie8n7FuzMJPClw==';
+
 // Signup Route
 router.post('/signup', async (req, res) => {
   try {
@@ -36,7 +38,7 @@ router.post('/signup', async (req, res) => {
 
     const token = jwt.sign(
       { id: data.id, email: data.email },
-      process.env.JWT_SECRET,
+      JWT_SECRET,
       { expiresIn: '1h' }
     );
 
@@ -69,7 +71,7 @@ router.post('/login', async (req, res) => {
 
     const token = jwt.sign(
       { id: user.id, email: user.email },
-      process.env.JWT_SECRET,
+      JWT_SECRET,
       { expiresIn: '1h' }
     );
 
