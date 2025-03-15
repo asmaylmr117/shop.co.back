@@ -6,7 +6,7 @@ const app = express();
 
 // Middleware
 app.use(cors({
-  origin: 'https://shop-co-front.vercel.app',
+  origin: '*',
   methods: ['POST', 'GET', 'OPTIONS'],
   allowedHeaders: ['Content-Type'],
 }));
